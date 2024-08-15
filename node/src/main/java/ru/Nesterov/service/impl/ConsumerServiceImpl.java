@@ -29,11 +29,13 @@ public class ConsumerServiceImpl implements ru.Nesterov.service.ConsumerService 
     @Override
     public void consumeDocMessageUpdates(Update update) {
         log.debug("NODE: Doc message is received");
+        mainService.processDocMessage(update);
     }
 
     @RabbitListener(queues = PHOTO_MESSAGE_UPDATE)
     @Override
     public void consumePhotoMessageUpdates(Update update) {
         log.debug("NODE: Photo message is received");
+        mainService.processPhotoMessage(update);
     }
 }
