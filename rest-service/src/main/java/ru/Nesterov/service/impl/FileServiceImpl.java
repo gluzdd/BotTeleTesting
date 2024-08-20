@@ -1,14 +1,12 @@
 package ru.Nesterov.service.impl;
 
 import lombok.extern.log4j.Log4j;
-import org.apache.commons.io.FileUtils;
-import org.springframework.core.io.FileSystemResource;
+
 import org.springframework.stereotype.Service;
 import ru.Nesterov.dao.AppDocumentDAO;
 import ru.Nesterov.dao.AppPhotoDAO;
 import ru.Nesterov.entity.AppDocument;
 import ru.Nesterov.entity.AppPhoto;
-import ru.Nesterov.entity.BinaryContent;
 import ru.Nesterov.service.FileService;
 import ru.Nesterov.utils.CryptoTool;
 
@@ -44,19 +42,5 @@ public class FileServiceImpl implements FileService {
             return null;
         }
         return appPhotoDAO.findById(id).orElse(null);
-    }
-
-    @Override
-    public FileSystemResource getFileSystemResource(BinaryContent binaryContent) {
-        try {
-            //TODO добавить генерацию имени временного файла
-            File temp = File.createTempFile("tempFile", ".bin");
-            temp.deleteOnExit();
-            FileUtils.writeByteArrayToFile(temp, binaryContent.getFileAsArrayOfBytes());
-            return new FileSystemResource(temp);
-        } catch (IOException e) {
-            log.error(e);
-            return null;
-        }
     }
 }
