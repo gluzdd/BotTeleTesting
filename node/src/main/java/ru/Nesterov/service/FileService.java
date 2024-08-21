@@ -6,7 +6,10 @@ import ru.Nesterov.entity.AppPhoto;
 import ru.Nesterov.service.enums.LinkType;
 
 public interface FileService {
+
     AppDocument processDoc(Message telegramMessage);
+
     AppPhoto processPhoto(Message telegramMessage);
+
     String generateLink(Long docId, LinkType linkType);
 }

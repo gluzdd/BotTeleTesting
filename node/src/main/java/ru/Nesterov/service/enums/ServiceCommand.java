@@ -2,10 +2,12 @@ package ru.Nesterov.service.enums;
 
 
 public enum ServiceCommand {
+
     HELP("/help"),
     REGISTRATION("/registration"),
     CANCEL("/cancel"),
     START("/start");
+
     private final String value;
 
     ServiceCommand(String value) {

@@ -1,5 +1,6 @@
 package ru.Nesterov.controller;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,14 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Log4j
+@RequiredArgsConstructor
 @RequestMapping("/file")
 @RestController
 public class FileController {
-    private final FileService fileService;
 
-    public FileController(FileService fileService) {
-        this.fileService = fileService;
-    }
+    private final FileService fileService;
 
     @RequestMapping(method = RequestMethod.GET, value = "/get-doc")
     public void getDoc(@RequestParam("id") String id, HttpServletResponse response) {

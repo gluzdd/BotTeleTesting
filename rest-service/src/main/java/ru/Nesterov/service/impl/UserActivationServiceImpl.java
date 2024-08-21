@@ -1,19 +1,18 @@
 package ru.Nesterov.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.Nesterov.dao.AppUserDAO;
 import ru.Nesterov.service.UserActivationService;
 import ru.Nesterov.utils.CryptoTool;
 
+@RequiredArgsConstructor
 @Service
 public class UserActivationServiceImpl implements UserActivationService {
-    private final AppUserDAO appUserDAO;
-    private final CryptoTool cryptoTool;
 
-    public UserActivationServiceImpl(AppUserDAO appUserDAO, CryptoTool cryptoTool) {
-        this.appUserDAO = appUserDAO;
-        this.cryptoTool = cryptoTool;
-    }
+    private final AppUserDAO appUserDAO;
+
+    private final CryptoTool cryptoTool;
 
     @Override
     public boolean activation(String cryptoUserId) {
